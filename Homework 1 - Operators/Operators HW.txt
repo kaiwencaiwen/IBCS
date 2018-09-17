@@ -1,0 +1,21 @@
+2. Int, str, float
+3. Bool
+4. var1 +=1
+	it makes the code less cluttered and therefore easier to read and debug
+
+6.
+	a	error - left side of an assignment must be ONE variable, 		not an operation
+	b=100+1
+
+	b	error - variable name cannot contain spaces
+		var1=100
+		var2=50
+
+	c	This one is fine
+		HiHiByeHiHiBye
+
+	d	error - cannot print +=
+		print(my_name + " or " + your_name + "?")
+
+	e	error - left side of an assignment must be ONE variable, 		not assignment comparison
+		Remove line 6? (I have no idea what this is trying to do)
