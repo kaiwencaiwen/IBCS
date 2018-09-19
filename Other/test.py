@@ -1,3 +1,6 @@
-import random
-for n in range(50):
-	print(random.randint(0,2),end="")
+# Q8
+RGB=(255,255,255)
+RGBH=""
+for n in RGB:
+	RGBH+=hex(n)
+print(RGBH)

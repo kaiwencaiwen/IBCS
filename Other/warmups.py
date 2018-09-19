@@ -47,3 +47,41 @@ print(chr(65))
 
 print(my_int << 1)
 print(my_int & 0)
+
+# 0919
+
+a = int(input())
+b = int(input())
+
+
+def sumreturn(a, b):
+    c = print(a + b)
+    return c
+
+
+sumreturn(a, b)
+
+str1 = input()
+str2 = input()
+repeats = int(input())
+
+
+def strrepeats(str1, str2, repeats):
+    return ((str1 + str2) * repeats)
+
+
+print(strrepeats(str1, str2, repeats))
+
+
+str3 = input()
+
+
+def findvowels(str3):
+    v = 0
+    for c in str3:
+        if c in "aeiou":
+            v += 1
+
+
+findvowels(str3)
+print(v)
