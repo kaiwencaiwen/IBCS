@@ -52,4 +52,6 @@ def triple(num):
 
 def quadruple(num):
     return add(num, triple(num, num))
+quadruple(2)
 # Q5
+#(continued in main.py)
