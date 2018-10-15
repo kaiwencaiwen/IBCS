@@ -19,9 +19,8 @@ def antstep():
     elif direction == 4:
         antx -= 1
 
-
+pixel = img.load()
 while antx < 499 and antx > 0 and anty < 499 and anty > 0:
-    pixel = img.load()
     if pixel[antx, anty] == (0, 0, 0):
         pixel[antx, anty] = (255, 255, 255)
         if direction == 4:
