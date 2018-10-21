@@ -13,7 +13,6 @@ rectsize = 5
 def rectdraw(color, xpos, ypos):
     pygame.draw.rect(screen, color, (xpos, ypos, rectsize, rectsize), 0)
 
-
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
