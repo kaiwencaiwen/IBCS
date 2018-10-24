@@ -1,6 +1,4 @@
-def bigfunc():
-	def smallfunc(a):
-		return("hello"+a)
-	return smallfunc
-
-print(bigfunc()("hihi"))
+try:
+	print("a"+22)
+except:
+	print("can't do that")
