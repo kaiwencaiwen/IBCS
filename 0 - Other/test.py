@@ -1,4 +1,2 @@
-try:
-	print("a"+22)
-except:
-	print("can't do that")
+alist=[1,3,4,3]
+print(alist[-3:2])
