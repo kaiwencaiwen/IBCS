@@ -1,2 +1,3 @@
-alist=[1,3,4,3]
-print(alist[-3:2])
+alist=[2,3,4,62,5,1]
+alist.sort()
+print(alist)
