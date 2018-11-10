@@ -1,54 +1,15 @@
-import operator
-# task 1
-attributes = []
-details = []
-with open("Assets/movies.txt", "r", encoding='utf-8') as f:
-    attributes = tuple(f.readline().strip().replace("\t", "").split(";"))
-    f.readline()
-    fline = f.readlines()
-for l in range(len(fline)):
-    c = tuple(fline[l].strip().replace("\t", "").split(";"))
-    details.append(c)
-
-# task 2
-with open("Assets/movie.tsv", "w", encoding="utf-8") as f:
-    for l in range(len(attributes)):
-        f.write(attributes[l])
-        if l != len(attributes) - 1:
-            f.write("\t")
-    f.write("\n")
-    for c in details:
-        for l in range(len(c)):
-            f.write(c[l])
-            if l != len(c) - 1:
-                f.write("\t")
-        f.write("\n")
-
-# task 3
-by_year = {}
-by_director = {}
-by_actor = {}
-by_genre = {}
-by_actress = {}
-
-
-def createdict(dname, ind):
-    for c in details:
-        try:
-            dname[c[ind]].append(c)
-        except:
-            dname[c[ind]] = [c]
-
-
-createdict(by_year, 0)
-createdict(by_director, 6)
-createdict(by_actor, 4)
-createdict(by_genre, 3)
-createdict(by_actress, 5)
-
+import pickle
+with open ("byyear.pickle","rb") as f:
+    by_year=pickle.load(f)
+with open ("byactress.pickle","rb") as f:
+    by_year=pickle.load(f)
+with open ("bydirector.pickle","rb") as f:
+    by_director=pickle.load(f)
+with open ("bygenre.pickle","rb") as f:
+    by_genre=pickle.load(f)
+with open ("byactor.pickle","rb") as f:
+    by_actor=pickle.load(f)
 # task 4
-
-
 def avgry():
     avg_runtime_year = {}
     for year, detail in by_year.items():
@@ -62,7 +23,7 @@ def avgry():
     return avg_runtime_year
 
 
-print(avgry())
+#print(avgry())
 
 
 def dm():
@@ -72,7 +33,7 @@ def dm():
     return directors_moviecount
 
 
-print(dm())
+#print(dm())
 
 
 def am():
@@ -82,7 +43,7 @@ def am():
     return actor_moviecount
 
 
-print(am())
+#print(am())
 
 
 def ym():
@@ -92,7 +53,7 @@ def ym():
     return year_moviecount
 
 
-print(ym())
+#print(ym())
 
 
 def gm():
@@ -102,7 +63,7 @@ def gm():
     return genre_moviecount
 
 
-print(gm())
+#print(gm())
 
 
 def ypop():
@@ -121,7 +82,7 @@ def ypop():
     return year_popularity
 
 
-print(ypop())
+#print(ypop())
 
 
 def gpop():
@@ -140,7 +101,7 @@ def gpop():
     return genre_popularity
 
 
-print(gpop())
+#print(gpop())
 
 
 def decg():
@@ -156,7 +117,7 @@ def decg():
     return decade_genrecount
 
 
-print(decg())
+#print(decg())
 
 # Task 5
 
@@ -177,7 +138,7 @@ def act2():
                 print(actor, "and", actress)
 
 
-act2()
+#act2()
 
 
 def actpop():
@@ -194,7 +155,7 @@ def actpop():
     return sorted(actor_popularity.items(), key=operator.itemgetter(1))
 
 
-print(actpop())
+#print(actpop())
 
 
 def dirpop():
@@ -211,7 +172,7 @@ def dirpop():
     return sorted(director_popularity.items(), key=operator.itemgetter(1))
 
 
-print(dirpop())
+#print(dirpop())
 
 
 def actawd():
@@ -226,7 +187,7 @@ def actawd():
     return sorted(actor_award.items(), key=operator.itemgetter(1))
 
 
-print(actawd())
+#print(actawd())
 
 
 def dirawd():
@@ -240,4 +201,35 @@ def dirawd():
     return sorted(director_award.items(), key=operator.itemgetter(1))
 
 
-print(dirawd())
+#print(dirawd())
+
+# plotted
+def avgryp():
+    ap=avgry()
+    yrp=sorted(ap)
+    lnp=[]
+    for n in yrp:
+        lnp.append(ap[n])
+    plt.plot(yrp, lnp, 'r-')
+    plt.xticks([i for i in range(3,80,10)])
+    plt.xlabel('Year')
+    plt.ylabel('Length')
+    plt.title('Runtime length by year')
+    plt.show()
+#avgryp()
+
+def amp():
+    ap=am()
+    sorted_by_value = sorted(ap.items(), key=lambda kv: kv[1])
+    actp=[]
+    movp=[]
+    for n in sorted_by_value:
+        actp.append(n[0])
+        movp.append(n[1])
+    # plt.plot(actp, movp, 'ro')
+    plt.xlabel('Actor')
+    plt.ylabel('Movie Length')
+    plt.title('Movies per actor')
+    plt.hist(movp,100)
+    plt.show()
+amp()
