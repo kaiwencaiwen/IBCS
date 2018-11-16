@@ -92,13 +92,13 @@ def gpop():
 def decg():
     decade_genrecount = {}
     for movi in details:
-        if "19" + str(movi[0])[2] + "0s" in decade_genrecount:
-            if movi[3] in decade_genrecount["19" + str(movi[0])[2] + "0s"]:
-                decade_genrecount["19" + str(movi[0])[2] + "0s"][movi[3]] += 1
+        if "19" + str(movi[0])[2] + "0" in decade_genrecount:
+            if movi[3] in decade_genrecount["19" + str(movi[0])[2] + "0"]:
+                decade_genrecount["19" + str(movi[0])[2] + "0"][movi[3]] += 1
             else:
-                decade_genrecount["19" + str(movi[0])[2] + "0s"][movi[3]] = 1
+                decade_genrecount["19" + str(movi[0])[2] + "0"][movi[3]] = 1
         else:
-            decade_genrecount["19" + str(movi[0])[2] + "0s"] = {movi[3]: 1}
+            decade_genrecount["19" + str(movi[0])[2] + "0"] = {movi[3]: 1}
     return decade_genrecount
 
 
@@ -177,7 +177,7 @@ def dirawd():
 with open("Pickles/average_runtime_year.pickle", "wb") as f:
     pickle.dump(avgry(), f)
 
-with open("Pickles/directors_moviecount.pickle", "wb") as f:
+with open("Pickles/director_moviecount.pickle", "wb") as f:
     pickle.dump(dm(), f)
 with open("Pickles/year_moviecount.pickle", "wb") as f:
     pickle.dump(ym(), f)
