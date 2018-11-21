@@ -1,3 +1,4 @@
 oo=[1,2,3]
-oo[0],oo[2]=oo[2],oo[0]
+
+oo.insert(1,2)
 print(oo)

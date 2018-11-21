@@ -109,9 +109,6 @@ plt.legend()
 plt.show()
 
 # Graph 3
-print(director_award)
-print("--------------------")
-print(director_moviecount)
 x = []
 y = []
 area=[]
@@ -121,10 +118,9 @@ for n in director_popularity:
             x.append(n[1])
             y.append(m[1])
             area.append(10*director_moviecount[n[0]])
-print(area)
 plt.axis([0, 100, 0, 10])
 plt.xlabel('Popularity')
 plt.ylabel('Awards')
-plt.title('Directors popualrity and awards won (size = amount of movies made)')
+plt.title('Directors popualrity and awards won\n(size = amount of movies made)')
 plt.scatter(x, y,s=area, alpha=0.5)
 plt.show()
