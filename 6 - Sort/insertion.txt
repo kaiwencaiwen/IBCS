@@ -1,0 +1,30 @@
+//==== Insertion Sort ==============================
+// This demonstrates a simple, inefficient Insertion Sort.
+// ==============================================
+
+NUMS = [15,30,85,25,40,90,50,65,20,60]
+
+output "Before sorting"
+loop C from 0 to 9
+   output NUMS[C]
+end loop
+
+	  
+
+output "========"
+
+loop PASS from 1 to 9
+    STARTVAL = NUMS[PASS]
+    COMPP = PASS -1
+    loop while STARTVAL<NUMS[COMPP] AND COMPP>0
+        NUMS[COMPP+1]=NUMS[COMPP]
+        COMPP =COMPP-1
+    end while
+    NUMS[COMPP+1]=STARTVAL
+end loop
+
+output "After sorting"
+
+loop C from 0 to 9
+   output NUMS[C]
+end loop
