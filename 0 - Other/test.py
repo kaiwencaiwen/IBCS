@@ -1,4 +1,5 @@
-oo=[1,2,3]
+a="dawhwwuah hdwaiuw"
+a=a.split(" ")
+a[0]=a[0][0]
 
-oo.insert(1,2)
-print(oo)
+print(a[0]+" "+a[1])
