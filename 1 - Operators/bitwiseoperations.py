@@ -1,4 +1,4 @@
-# Q1
+# Q1a
 a = int(input())
 b = 1
 if a & b == 1:
