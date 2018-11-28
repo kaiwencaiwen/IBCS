@@ -1,7 +1,7 @@
 #a
 from PIL import Image
 import random
-img = Image.new("RGB", (5000, 5000), "black")
+img = Image.new("RGB", (5000, 5000), "white")
 pixel = img.load()
 
 centerx = 2500
@@ -12,7 +12,7 @@ size = 1250
 def square(cx, cy, cs):
     for x in range(cx - cs, cx + cs):
         for y in range(cy - cs, cy + cs):
-            pixel[x, y] = (255, 255, 255)
+            pixel[x, y] = (0, 0, 0)
 
 
 square(centerx, centery, size)
@@ -30,5 +30,5 @@ def fractalstep(fcx, fcy, fsize):
 
 fractalstep(centerx, centery, size)
 
-img.save("fractal.jpg")
+img.save("fractalw.jpg")
 img.show()
