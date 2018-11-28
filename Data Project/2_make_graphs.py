@@ -40,12 +40,12 @@ with open("Pickles/year_moviecount.pickle", "rb") as f:
 with open("Pickles/year_popularity.pickle", "rb") as f:
     year_popularity = pickle.load(f)
 # Graph 1
-label_tick=[i for i in range(0,90,10)]
-label_tick=tuple(label_tick)
+label_tick = [i for i in range(0, 90, 10)]
+label_tick = tuple(label_tick)
 
-yearlabels=[]
-for n in range(1920,2001):
-    if n%10==0:
+yearlabels = []
+for n in range(1920, 2001):
+    if n % 10 == 0:
         yearlabels.append(n)
 
 year_popularity = sorted(year_popularity.items(), key=lambda kv: kv[0])
@@ -69,35 +69,44 @@ fig.tight_layout()
 plt.show()
 
 # Graph 2
-label_tick=[i for i in range(0,80,10)]
-label_tick=tuple(label_tick)
+label_tick = [i for i in range(0, 80, 10)]
+label_tick = tuple(label_tick)
 
-yearlabels=[]
-for n in range(1920,2000):
-    if n%10==0:
+yearlabels = []
+for n in range(1920, 2000):
+    if n % 10 == 0:
         yearlabels.append(n)
 
 decade_genrecount = sorted(decade_genrecount.items(), key=lambda kv: kv[0])
 
-barcolors=["r","m","b","g","k"]
-labels=["Action","Drama","Comedy","Horror","Mystery"]
-biglist=[]
+barcolors = ["r", "m", "b", "g", "k","y","c","#FF5555"]
+labels = ["Action", "Drama", "Comedy", "Horror", "Mystery","War","Science Fiction","Western"]
+biglist = []
+
+
 def compilelist(labeln):
-    elist=[]
+    elist = []
     for n in decade_genrecount:
         try:
             elist.append(n[1][labeln])
         except:
             elist.append(0)
     return elist
-for n in range(5):
+
+
+for n in range(len(barcolors)):
     biglist.append(compilelist(labels[n]))
 
 fig, ax = plt.subplots()
-def makealine(colorv,listn,labeln):
-    ax.plot([i for i in range(0,80,10)], listn, color=colorv,marker='o',label=labeln)
-for n in range(5):
-    makealine(barcolors[n],biglist[n],labels[n])
+
+
+def makealine(colorv, listn, labeln):
+    ax.plot([i for i in range(0, 80, 10)], listn,
+            color=colorv, marker='o', label=labeln)
+
+
+for n in range(len(barcolors)):
+    makealine(barcolors[n], biglist[n], labels[n])
 
 ax.axis([0, 1, 0, 250])
 ax.set_xlabel('Decade')
@@ -111,16 +120,16 @@ plt.show()
 # Graph 3
 x = []
 y = []
-area=[]
+area = []
 for n in director_popularity:
     for m in director_award:
-        if n[0]==m[0]:
+        if n[0] == m[0]:
             x.append(n[1])
             y.append(m[1])
-            area.append(10*director_moviecount[n[0]])
+            area.append(10 * director_moviecount[n[0]])
 plt.axis([0, 100, 0, 10])
 plt.xlabel('Popularity')
 plt.ylabel('Awards')
-plt.title('Directors popualrity and awards won\n(size = amount of movies made)')
-plt.scatter(x, y,s=area, alpha=0.5)
+plt.title('Directors popularity and awards won\n(size = amount of movies made)')
+plt.scatter(x, y, s=area, alpha=0.5)
 plt.show()
