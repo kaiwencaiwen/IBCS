@@ -1,0 +1,94 @@
+# 1a
+input NUM
+MODDER=NUM mod 2
+DIVISOR = (NUM-MODDER) /2
+output DIVISOR,MODDER
+
+# 1b
+loop while NUM>=1
+	MODDER=NUM mod 2
+	NUM = (NUM-MODDER) /2
+	output MODDER
+end loop
+
+#1c
+BIN = [0,0,0,0,0,0,0,0]
+
+input NUM
+COUNTER=0
+loop while NUM>=1
+	MODDER=NUM mod 2
+	NUM = (NUM-MODDER) /2
+	BIN[COUNTER]=MODDER
+	COUNTER=COUNTER+1
+end loop
+
+N = 8
+K = 0
+
+loop while K < (N - 1)/2
+    TEMP = BIN[K]
+    BIN[K] = BIN[N - K - 1]
+    BIN[N - K - 1] = TEMP
+    K = K + 1
+end loop
+	
+loop C from 0 to N-1
+    output BIN[C]
+end loop
+
+# 2a
+NUM=9
+loop while NUM!=1
+	output NUM
+	if NUM mod 2 = 0 then
+		NUM=NUM/2
+	else
+		NUM=(NUM*3)+1
+	end if
+end loop
+
+# 2b
+NUMS = new Collection()
+NUM=9
+loop while NUM!=1
+	NUMS.addItem(NUM)
+	if NUM mod 2 = 0 then
+		NUM=NUM/2
+	else
+		NUM=(NUM*3)+1
+	end if
+end loop
+NUMS.resetNext()
+
+loop while NUMS.hasNext()
+    NUM = NUMS.getNext()
+	output NUM
+end loop
+
+#2c
+NUMST = new Collection()
+NUM=9
+loop while NUM!=1
+	NUMST.addItem(NUM)
+	if NUM mod 2 = 0 then
+		NUM=NUM/2
+	else
+		NUM=(NUM*3)+1
+	end if
+end loop
+NUMST.resetNext()
+
+MULTFIVE= new Array()
+COUNTER=0
+loop while NUMST.hasNext()
+    NUM = NUMST.getNext()
+	if NUM mod 5 = 0 then
+		MULTFIVE[COUNTER]=NUM
+		COUNTER=COUNTER+1
+	end if
+end loop
+
+loop N from 0 to COUNTER-1
+	output MULTFIVE[N]
+end loop
