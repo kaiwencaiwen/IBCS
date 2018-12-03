@@ -1,0 +1,178 @@
+// 1a
+input NUM
+MODDER=NUM mod 2
+DIVISOR = (NUM-MODDER) /2
+output DIVISOR,MODDER
+
+// 1b
+loop while NUM>=1
+	MODDER=NUM mod 2
+	NUM = (NUM-MODDER) /2
+	output MODDER
+end loop
+
+// 1c
+BIN = [0,0,0,0,0,0,0,0]
+
+input NUM
+COUNTER=0
+loop while NUM>=1
+	MODDER=NUM mod 2
+	NUM = (NUM-MODDER) /2
+	BIN[COUNTER]=MODDER
+	COUNTER=COUNTER+1
+end loop
+
+N = 8
+K = 0
+
+loop while K < (N - 1)/2
+    TEMP = BIN[K]
+    BIN[K] = BIN[N - K - 1]
+    BIN[N - K - 1] = TEMP
+    K = K + 1
+end loop
+	
+loop C from 0 to N-1
+    output BIN[C]
+end loop
+
+// 2a
+NUM=9
+loop while NUM<>1
+	output NUM
+	if NUM mod 2 = 0 then
+		NUM=NUM/2
+	else
+		NUM=(NUM*3)+1
+	end if
+end loop
+
+// 2b
+NUMS = new Collection()
+NUM=9
+loop while NUM<>1
+	NUMS.addItem(NUM)
+	if NUM mod 2 = 0 then
+		NUM=NUM/2
+	else
+		NUM=(NUM*3)+1
+	end if
+end loop
+NUMS.resetNext()
+
+loop while NUMS.hasNext()
+    NUM = NUMS.getNext()
+	output NUM
+end loop
+
+// 2c
+NUMST = new Collection()
+NUM=9
+loop while NUM<>1
+	NUMST.addItem(NUM)
+	if NUM mod 2 = 0 then
+		NUM=NUM/2
+	else
+		NUM=(NUM*3)+1
+	end if
+end loop
+NUMST.resetNext()
+
+MULTFIVE= new Array()
+COUNTER=0
+` while NUMST.hasNext()
+    NUM = NUMST.getNext()
+	if NUM mod 5 = 0 then
+		MULTFIVE[COUNTER]=NUM
+		COUNTER=COUNTER+1
+	end if
+end loop
+
+loop N from 0 to COUNTER-1
+	output MULTFIVE[N]
+end loop
+
+// 3a
+ARRAYA=["David","John","Henry","Ludwig"]
+ARRAYB=["Philip","Louis","Walter","Derrick"]
+
+loop N from 0 to 3
+	output firstthree(ARRAYA[N])
+	output lastthree(ARRAYA[N])
+	output firstthree(ARRAYB[N])
+	output lastthree(ARRAYB[N])
+end loop
+
+
+method firstthree(s)
+   return s.substring(0,3)
+end method
+method lastthree(s)
+	n=0
+	loop while s[n]!=undefined
+	 n=n+1
+	end loop
+	return s[n-3]+s[n-2]+s[n-1]
+end method
+
+// 3b
+ARRAYA=["David","John","Henry","Ludwig"]
+ARRAYB=["Philip","Louis","Walter","Derrick"]
+STACK = new Stack()
+
+loop N from 0 to 3
+	STACK.push(firstthree(ARRAYA[N]))
+	STACK.push(lastthree(ARRAYA[N]))
+	STACK.push(firstthree(ARRAYB[N]))
+	STACK.push(lastthree(ARRAYB[N]))
+end loop
+
+
+method firstthree(s)
+   return s.substring(0,3)
+end method
+method lastthree(s)
+	n=0
+	loop while s[n]!=undefined
+	 n=n+1
+	end loop
+	return s[n-3]+s[n-2]+s[n-1]
+end method
+
+loop while NOT(STACK.isEmpty())
+   NAME = STACK.pop()
+   output NAME
+end loop   
+
+// 3c
+ARRAYA=["David","John","Henry","Ludwig"]
+ARRAYB=["Philip","Louis","Walter","Derrick"]
+STACKT = new Stack()
+SIXES = new Collection()
+loop N from 0 to 3
+	STACKT.push(firstthree(ARRAYA[N]))
+	STACKT.push(lastthree(ARRAYA[N]))
+	STACKT.push(firstthree(ARRAYB[N]))
+	STACKT.push(lastthree(ARRAYB[N]))
+end loop
+
+
+method firstthree(s)
+   return s.substring(0,3)
+end method
+method lastthree(s)
+	n=0
+	loop while s[n]!=undefined
+	 n=n+1
+	end loop
+	return s[n-3]+s[n-2]+s[n-1]
+end method
+
+loop while NOT(STACKT.isEmpty())
+   ONE = STACKT.pop()
+   TWO = STACKT.pop()
+   FULL = ONE+TWO
+   output FULL
+   SIXES.addItem(FULL)
+end loop
