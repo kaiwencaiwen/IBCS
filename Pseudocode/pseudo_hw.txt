@@ -1,17 +1,17 @@
-# 1a
+// 1a
 input NUM
 MODDER=NUM mod 2
 DIVISOR = (NUM-MODDER) /2
 output DIVISOR,MODDER
 
-# 1b
+// 1b
 loop while NUM>=1
 	MODDER=NUM mod 2
 	NUM = (NUM-MODDER) /2
 	output MODDER
 end loop
 
-#1c
+// 1c
 BIN = [0,0,0,0,0,0,0,0]
 
 input NUM
@@ -37,7 +37,7 @@ loop C from 0 to N-1
     output BIN[C]
 end loop
 
-# 2a
+// 2a
 NUM=9
 loop while NUM!=1
 	output NUM
@@ -48,7 +48,7 @@ loop while NUM!=1
 	end if
 end loop
 
-# 2b
+// 2b
 NUMS = new Collection()
 NUM=9
 loop while NUM!=1
@@ -66,7 +66,7 @@ loop while NUMS.hasNext()
 	output NUM
 end loop
 
-#2c
+// 2c
 NUMST = new Collection()
 NUM=9
 loop while NUM!=1
@@ -91,4 +91,73 @@ end loop
 
 loop N from 0 to COUNTER-1
 	output MULTFIVE[N]
+end loop
+
+// 3a
+ARRAYA=["David","John","Henry","Ludwig"]
+ARRAYB=["Philip","Louis","Walter","Derrick"]
+
+loop N from 0 to 4
+	firstthree(ARRAYA[N])
+	lastthree(ARRAYA[N])
+	firstthree(ARRAYB[N])
+	lastthree(ARRAYB[N])
+
+
+method firstthree(s)
+   return s.substring(0,3)
+end method
+
+//tbc
+
+// 3b
+// 3c
+
+// Section 2
+// 1a
+
+// 1bi
+// 0, 4, 0, 4
+
+// 1bii
+//Row 0 will constantly be overwritten whenever TOP is being filled, and initial and final indices for LEFT and RIGHT, respectively, will incorrectly stay at 0
+
+// 1biii
+// 3, 0
+
+// 1c
+N=input("Enter an integer greater than zero")
+K=N*N
+Z=1
+TOP = 0
+BOTTOM = 4
+LEFT = 0
+RIGHT = 4
+ROTATE=0
+loop while Z<=K
+	if ROTATE mod 4=0 then
+		loop for N=LEFT to RIGHT-1
+			A[TOP][N]=Z 
+			Z=Z+1
+		end loop
+		TOP=TOP+1
+	elif ROTATE mod 4=1 then
+		loop for N=TOP to BOTTOM-1
+			A[RIGHT][N]=Z
+			Z=Z+1
+		end loop
+		RIGHT=RIGHT-1
+	elif ROTATE mod 4=2 then
+		loop for N=RIGHT to LEFT
+			A[BOTTOM][N]=Z
+			Z=Z+1
+		end loop
+		BOTTOM=BOTTOM-1
+	else
+		loop for N=BOTTOM to TOP
+			A[LEFT][N]=Z
+			Z=Z+1
+		end loop
+		LEFT=LEFT+1
+	endif
 end loop
