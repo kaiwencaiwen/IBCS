@@ -12,9 +12,8 @@ time = 0
 x_coords = []
 y_coords = []
 for i in range(0, 6):
-    population -= int(population * death_rate)
-    current_starvation_rate = starvation_rate_baseline * \
-        math.log(population, 10)
+    current_starvation_rate = starvation_rate_baseline*math.log(population, 10)
+    population -= int(population * death_rate)   
     population -= int(current_starvation_rate * population)
     if population < 1000:
         population -= int(population * predator_rate)
