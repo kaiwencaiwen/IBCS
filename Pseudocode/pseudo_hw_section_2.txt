@@ -57,3 +57,31 @@ loop ROW from 0 to S-1
 	end loop
         output ""
 end loop
+
+// 2a
+// It is easy to access objects from a linked list, as all tickets can be organized in memory by order of ticket number. Thus, each ticket will point to the consequtive ticket
+
+//2bi
+// Updating the Date and Arrival values of a ticket
+
+//2bii
+// Updating the Date and PaidOn values of a ticket
+
+
+//2c
+// Check if the difference between the time of exit and the PaidAt time has a difference of more than 10 minutes
+
+//2d
+// For the exiting ticket, check the PaidAt time is valid. Once complete, update the display, decreasing by one, and raise the exit barrier. Then, issue a ticket and raise the barrier. Update the values of Nr, Date and Arrival. Update the display to increase by one.
+
+//2e
+// It will be inefficient to search for a specific ticket in the memory as all previous tickets are kept in the linked list.
+
+//2f
+// Check the time of stay
+// If it exceeds 24 hours, return the price as 30*(the duration divided by 24, rounded up)
+// Otherwise, if it exceeds 4 hours, return the price as 30
+// Otherwise, if it exceeds 2.5 hours, return the price as 18
+// Otherwise, if it exceeds 2 hours, return the price as 8
+// Otherwise, if it exceeds 30 minutes, return the price as 3
+// Otherwise, return the price as 0.5
