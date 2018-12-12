@@ -7,18 +7,18 @@ R = 0
 D = 0
 beta = 0.3
 gamma = 0.01
-delta=0.001
+delta = 0.001
 graph_susceptible = []
 graph_infected = []
 graph_recovered = []
-graph_dead=[]
+graph_dead = []
 graph_steps = []
 for i in range(0, 365):
     newI = beta * I * S
     newR = gamma * I
     newD = delta * I
     S -= newI
-    I += (newI - newR- newD)
+    I += (newI - newR - newD)
     R += newR
     D += newD
     graph_steps.append(i)
