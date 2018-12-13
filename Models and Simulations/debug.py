@@ -10,8 +10,10 @@ simulation.set_cell(10, 10, (255, 0, 0))
 simulation.remove_cell(10, 10)
 # Red is Infected, Green is Recovered, Blue is susceptible, Cyan is dead
 colors = [(200, 0, 0), (0, 200, 0), (0, 0, 200), (0, 255, 255)]
-for n in range(300):
-    simulation.set_cell(randint(0,60),randint(0,40),colors[randint(0,3)])
+for m in range(0, 60):
+    for p in range(0,40):
+        if random()>0.875:
+            simulation.set_cell(m,p, colors[randint(1, 2)])
 done = False
 
 # set up grid for the time that each cell has been infected for
@@ -31,9 +33,11 @@ while not done:
             # 1 square away
             onesquare = simulation.get_surroundings(cell[0], cell[1], 1)
             onep = 0
+            print(onesquare)
             for r in onesquare:
                 for t in r:
                     if t == (200, 0, 0):
+                        print(t)
                         onep += 1
             infectchance += 0.25 * onep
             # 2 squares away
@@ -57,7 +61,7 @@ while not done:
                 infectchance = 0.97
 
             # convert to infected
-            if random() < infectchance:
+            if random() > infectchance:
                 simulation.set_cell(cell[0], cell[1], (200, 0, 0))
         # every infected cell gets its infected time updated by 1
         if simulation.cells[cell] == (200, 0, 0):
@@ -69,5 +73,5 @@ while not done:
                 simulation.set_cell(cell[0], cell[1], (0, 200, 0))
             else:
                 simulation.set_cell(cell[0], cell[1], (0, 255, 255))
-    time.sleep(0.2)
+    time.sleep(50)
 simulation.end()
