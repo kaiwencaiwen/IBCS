@@ -9,10 +9,11 @@ male_birth_rate = 0.5
 death_rate = 0.05
 predator_rate = 0.10
 starvation_rate= 0.00000045
+waste_accumulation_rate=0.5
 time = 0
 x_coords = []
 y_coords = []
-for i in range(0, 200):
+for i in range(0, 500):
     menpop -= int(menpop * death_rate)
     womenpop -= int(womenpop * death_rate)    
     if (menpop+womenpop)>1000:
@@ -20,6 +21,8 @@ for i in range(0, 200):
         womenpop-=int(300*womenpop/(menpop+womenpop))
     menpop-=int((menpop**3)*starvation_rate)
     womenpop-=int((womenpop**3)*starvation_rate)
+    menpop-=int(i**waste_accumulation_rate)
+    womenpop-=int(i**waste_accumulation_rate)
 
     for j in range(0, (menpop + womenpop)):
         if random() <= fertile_rate:
