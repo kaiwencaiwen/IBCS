@@ -60,7 +60,7 @@ bar1_index = [i for i in range(len(year_popularity))]
 rects1 = ax.bar(bar1_index, popval, bar_width, color='b')
 
 ax.set_xlabel('Year')
-ax.set_ylabel('Popularity')
+ax.set_ylabel('Pwait_time_list=[]opularity')
 ax.set_title('Popularity of movies by year')
 ax.set_xticks(label_tick)
 ax.set_xticklabels(yearlabels)
